@@ -19,5 +19,5 @@ Now u can make modules without coding.
    `./gradlew test`
 
 ## Credits and license
-- Credits - [Discord](ligmaballz1818)
+- Credits - Discord(ligmaballz1818)
 - License: [LICENSE](LICENSE)
