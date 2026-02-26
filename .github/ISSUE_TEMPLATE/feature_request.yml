@@ -1,0 +1,32 @@
+name: Feature request
+description: Propose an enhancement for Flow Forge, Module Manager, or GUI systems.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What limitation are you facing?
+      placeholder: Describe the current pain point.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the feature you want.
+      placeholder: What should be added or changed?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional.
+  - type: textarea
+    id: context
+    attributes:
+      label: Extra context
+      description: Optional references, screenshots, or examples.

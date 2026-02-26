@@ -1,5 +1,17 @@
 name: Publish Development Build
-on: push
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dev-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -20,8 +32,16 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Run Quality Gate + Release Build
+        run: ./gradlew --no-daemon clean buildRelease
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-build
+          path: |
+            build/libs/*-release-obf.jar
+            build/libs/*.jar
 
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -31,4 +51,4 @@ jobs:
           name: Dev Build
           prerelease: true
           files: |
-            ./build/libs/*.jar
+            ./build/libs/*-release-obf.jar

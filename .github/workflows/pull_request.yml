@@ -1,15 +1,23 @@
-name: Build Pull Request Artifacts
-on: pull_request
+name: Pull Request Quality Gate
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-            persist-credentials: false
+          persist-credentials: false
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -20,11 +28,13 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Run Quality Gate
+        run: ./gradlew --no-daemon qualityGate
 
-      - name: Release
+      - name: Upload Test Reports
         uses: actions/upload-artifact@v4
         with:
-          name: Artifacts
-          path: build/libs/
+          name: test-reports
+          path: |
+            build/reports/tests/
+            build/test-results/

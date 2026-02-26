@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "kyv3-addon",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "Kyv3 Flow Addon",
+  "description": "Flow Forge + Module Manager addon for Meteor Client.",
   "authors": [
-    "seasnail"
+    "ligmaballz1818"
   ],
   "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
+    "discord": "ligmaballz1818"
   },
-  "icon": "assets/template/icon.png",
+  "icon": "assets/kyv3-addon/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "com.kyv3.addon.Kyv3Addon"
     ]
   },
   "mixins": [
-    "addon-template.mixins.json"
+    "kyv3-addon.mixins.json"
   ],
   "custom": {
     "meteor-client:color": "225,25,25",

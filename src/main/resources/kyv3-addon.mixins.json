@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.kyv3.addon.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "GuiRendererAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
